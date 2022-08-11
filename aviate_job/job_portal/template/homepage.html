@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+	<style>
+    body {background-color: rgba(211, 220, 190, 0.815);}
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		/* setting the text-align property to center*/
+		td {
+			padding: 5px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+  {% block content %}
+	<table style="width:100%">
+		<tr>
+			<th>Name</th>
+			<th>Application Status </th>
+      <th>Profile view</th>
+    </tr>
+    {% for data in obj %}
+		<tr>
+        <td>{{data.first_name}} {{data.last_name}}</td>
+        <td>{{data.status}}</td>
+        <td><a href="{% url 'candidate-info' data.id %}">show profile</a></td>
+        <br>
+    </tr>
+    {% endfor %}
+	</table>
+  {% endblock %}
+</body>
+</html>
